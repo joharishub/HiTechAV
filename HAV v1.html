@@ -1,0 +1,394 @@
+<div id="hav-service-plans-root">
+  <style>
+    #hav-service-plans-root {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    #hav-service-plans-root .service-plans {
+      background: #f5f7fb;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    #hav-service-plans-root .service-plans__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    #hav-service-plans-root .service-plans__header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    #hav-service-plans-root .service-plans__logo {
+      max-width: 320px;
+      height: auto;
+      margin: 0 auto 0.5rem;
+      display: block;
+    }
+
+    #hav-service-plans-root .service-plans__tagline {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+      color: #666;
+      margin: 0 0 1rem;
+    }
+
+    #hav-service-plans-root .service-plans__headline {
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      margin: 0 0 0.75rem;
+    }
+
+    #hav-service-plans-root .service-plans__lead {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    #hav-service-plans-root .service-plans__intro {
+      max-width: 720px;
+      margin: 2rem auto 3rem;
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    /* Grid */
+    #hav-service-plans-root .service-plans__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    /* Plan Cards */
+    #hav-service-plans-root .plan {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem 1.9rem;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hav-service-plans-root .plan::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.04), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #hav-service-plans-root .plan:hover::before {
+      opacity: 1;
+    }
+
+    #hav-service-plans-root .plan__eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0 0 0.3rem;
+    }
+
+    #hav-service-plans-root .plan__title {
+      font-size: 1.35rem;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 0.35rem;
+    }
+
+    #hav-service-plans-root .plan__subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 0 0 0.75rem;
+    }
+
+    #hav-service-plans-root .plan__includes {
+      font-size: 0.88rem;
+      color: #555;
+      margin-bottom: 0.75rem;
+    }
+
+    #hav-service-plans-root .plan__list {
+      list-style: disc;
+      padding-left: 1.1rem;
+      margin: 0 0 1rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    #hav-service-plans-root .plan__list li + li {
+      margin-top: 0.25rem;
+    }
+
+    #hav-service-plans-root .plan__ideal {
+      margin-top: auto;
+      font-size: 0.86rem;
+      color: #555;
+    }
+
+    #hav-service-plans-root .plan--preferred {
+      border-color: rgba(0, 102, 204, 0.3);
+    }
+
+    #hav-service-plans-root .plan--elite {
+      border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Concierge */
+    #hav-service-plans-root .concierge {
+      margin-top: 3rem;
+    }
+
+    #hav-service-plans-root .concierge__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      align-items: flex-start;
+      background: #0c0c14;
+      color: #f5f5f5;
+      border-radius: 20px;
+      padding: 1.9rem 1.75rem;
+    }
+
+    #hav-service-plans-root .concierge__title {
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      margin: 0 0 0.4rem;
+    }
+
+    #hav-service-plans-root .concierge__badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 245, 245, 0.5);
+    }
+
+    #hav-service-plans-root .concierge__subtitle {
+      margin: 0 0 0.35rem;
+      font-size: 0.9rem;
+      color: #d0d0d0;
+    }
+
+    #hav-service-plans-root .concierge__note {
+      font-size: 0.85rem;
+      color: #a0a0a0;
+    }
+
+    #hav-service-plans-root .concierge__list {
+      flex: 1 1 260px;
+      list-style: disc;
+      padding-left: 1.1rem;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    #hav-service-plans-root .concierge__list li + li {
+      margin-top: 0.25rem;
+    }
+
+    /* CTA */
+    #hav-service-plans-root .service-plans__cta {
+      text-align: center;
+      margin-top: 3.2rem;
+    }
+
+    #hav-service-plans-root .service-plans__cta h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.4rem;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+    }
+
+    #hav-service-plans-root .service-plans__cta p {
+      margin: 0 0 1.4rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    #hav-service-plans-root .btn.btn--primary {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    #hav-service-plans-root .btn.btn--primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      background: #111;
+    }
+
+    @media (max-width: 768px) {
+      #hav-service-plans-root .service-plans {
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      #hav-service-plans-root .concierge__inner {
+        padding: 1.5rem 1.35rem;
+      }
+    }
+  </style>
+
+  <section class="service-plans">
+    <div class="service-plans__inner">
+      <header class="service-plans__header">
+        <img
+          src="LOGO_URL_HERE"
+          alt="hi.tech.audio.video"
+          class="service-plans__logo"
+        />
+        <p class="service-plans__tagline">
+          tailored vision. customized design. ultimate experience.
+        </p>
+        <h1 class="service-plans__headline">performance. protected.</h1>
+        <p class="service-plans__lead">
+          Premium monitoring and managed services for audio, video, network,
+          and surveillance systems - powered by OvrC remote intelligence.
+        </p>
+      </header>
+
+      <section class="service-plans__intro">
+        <p>
+          Your system was designed to look beautiful and perform flawlessly.
+          Our service plans make sure it stays that way. Using OvrC remote
+          management, we monitor the health of your audio/video, network, and
+          surveillance equipment, resolve many issues before you notice them,
+          and deliver priority support when you need it most.
+        </p>
+      </section>
+
+      <div class="service-plans__grid">
+        <!-- Essential -->
+        <article class="plan plan--essential">
+          <p class="plan__eyebrow">tier one</p>
+          <h2 class="plan__title">Essential</h2>
+          <p class="plan__subtitle">reliable protection for everyday systems.</p>
+          <ul class="plan__list">
+            <li>24/7 monitoring of OvrC-compatible A/V, network, and surveillance devices</li>
+            <li>Automatic alerts and proactive remote troubleshooting</li>
+            <li>Quarterly firmware and security checks</li>
+            <li>Monthly system health snapshot by email</li>
+            <li>Remote power reset via WattBox</li>
+            <li>Surveillance system online-status monitoring</li>
+            <li>One annual on-site system tune-up</li>
+            <li>Next-business-day remote support</li>
+          </ul>
+          <p class="plan__ideal">
+            <strong>Ideal for:</strong> smaller homes and light commercial spaces.
+          </p>
+        </article>
+
+        <!-- Preferred -->
+        <article class="plan plan--preferred">
+          <p class="plan__eyebrow">tier two</p>
+          <h2 class="plan__title">Preferred</h2>
+          <p class="plan__subtitle">our most popular full-service coverage.</p>
+          <p class="plan__includes">
+            Includes everything in <strong>Essential</strong>, plus:
+          </p>
+          <ul class="plan__list">
+            <li>Deep-dive troubleshooting via secure remote device access</li>
+            <li>Quarterly systems health review</li>
+            <li>Remote router and Wi-Fi configuration</li>
+            <li>Monthly network performance overview</li>
+            <li>Scheduled automated reboots for key equipment</li>
+            <li>Quarterly camera/NVR firmware updates</li>
+            <li>Annual theatre audio tune-up</li>
+            <li>Unlimited remote support</li>
+            <li>Two on-site visits per year</li>
+            <li>Priority scheduling within 48 hours</li>
+          </ul>
+          <p class="plan__ideal">
+            <strong>Ideal for:</strong> larger homes, restaurants, retail, and professional offices.
+          </p>
+        </article>
+
+        <!-- Elite -->
+        <article class="plan plan--elite">
+          <p class="plan__eyebrow">tier three</p>
+          <h2 class="plan__title">Elite</h2>
+          <p class="plan__subtitle">
+            maximum reliability. priority response. zero guesswork.
+          </p>
+          <p class="plan__includes">
+            Includes everything in <strong>Preferred</strong>, plus:
+          </p>
+          <ul class="plan__list">
+            <li>Weekly technician review of system alerts</li>
+            <li>Monthly firmware and security updates across supported devices</li>
+            <li>
+              Fully managed network service (Network-as-a-Service): Araknis
+              router/switch/access point leasing with refresh every 4 years
+              and full configuration management
+            </li>
+            <li>Monthly surveillance health audits and alert escalation</li>
+            <li>Annual camera cleaning and physical inspection</li>
+            <li>Full theatre audio and video calibration</li>
+            <li>Extended hardware warranty for covered devices (parts + labor)</li>
+            <li>Same-day remote support</li>
+            <li>Four on-site visits per year</li>
+            <li>Dedicated support line for Elite clients</li>
+          </ul>
+          <p class="plan__ideal">
+            <strong>Ideal for:</strong> estates, venues, hospitality, and mission-critical environments.
+          </p>
+        </article>
+      </div>
+
+      <!-- Concierge -->
+      <section class="concierge">
+        <div class="concierge__inner">
+          <div>
+            <h2 class="concierge__title">
+              Smart Home Concierge
+              <span class="concierge__badge">add-on</span>
+            </h2>
+            <p class="concierge__subtitle">
+              white-glove care for premium homes.
+            </p>
+            <p class="concierge__note">Available with any service plan.</p>
+          </div>
+          <ul class="concierge__list">
+            <li>Unlimited remote tweaks and adjustments</li>
+            <li>Monthly smart-home optimization session</li>
+            <li>Pre-travel and post-travel system checks</li>
+            <li>Holiday and seasonal scene or content adjustments</li>
+            <li>Priority weekend support</li>
+            <li>Quarterly in-home walkthrough</li>
+            <li>Direct access to a dedicated technician</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <footer class="service-plans__cta">
+        <h2>protect your investment.</h2>
+        <p>
+          Tell us about your home or project and we will design a service plan
+          around your system.
+        </p>
+        <a href="#contact" class="btn btn--primary">request a service plan</a>
+      </footer>
+    </div>
+  </section>
+</div>
